@@ -1,47 +1,187 @@
-/* styles.css */
-body {
-    background-color: #f8f9fa;
-}
-
-#pokedex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    margin: 10px;
-    width: 18rem;
+.pokemon-card {
+    transition: transform 0.3s ease;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-.card:hover {
-    transform: scale(1.05);
+.pokemon-card:hover {
+    transform: translateY(-5px);
 }
 
-.card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
+.type-badge {
+    text-transform: capitalize;
+    margin: 2px;
 }
 
-.modal-content {
-    border-radius: 15px;
-}
-
-.modal-header {
-    background-color: #007bff;
-    color: white;
-    border-radius: 15px 15px 0 0;
-}
-
-.modal-body {
-    padding: 20px;
+.pokemon-stats {
+    height: 10px;
+    border-radius: 5px;
 }
 
 .modal-body img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
 }
+
+.evolution-chain img {
+    width: 100px;
+    height: 100px;
+}
+
+.loading-spinner {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Cores dos tipos de Pokémon */
+.type-normal { background-color: #A8A878; }
+.type-fire { background-color: #F08030; }
+.type-water { background-color: #6890F0; }
+.type-electric { background-color: #F8D030; }
+.type-grass { background-color: #78C850; }
+.type-ice { background-color: #98D8D8; }
+.type-fighting { background-color: #C03028; }
+.type-poison { background-color: #A040A0; }
+.type-ground { background-color: #E0C068; }
+.type-flying { background-color: #A890F0; }
+.type-psychic { background-color: #F85888; }
+.type-bug { background-color: #A8B820; }
+.type-rock { background-color: #B8A038; }
+.type-ghost { background-color: #705898; }
+.type-dragon { background-color: #7038F8; }
+.type-dark { background-color: #705848; }
+.type-steel { background-color: #B8B8D0; }
+.type-fairy { background-color: #EE99AC; }
+
+/* Estilos Globais */
+body {
+    font-family: 'Poppins', sans-serif;
+    position: relative; /* Necessário para o pseudo-elemento */
+    color: white;
+    padding: 30px;
+}
+
+/* Pseudo-elemento para o overlay da imagem de fundo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://guikao.wordpress.com/wp-content/uploads/2012/01/pokemon_wallpaper01_1680.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.3; /* Defina a transparência aqui (0.0 totalmente transparente, 1.0 totalmente opaco) */
+    z-index: -1; /* Faz com que o overlay fique atrás do conteúdo */
+}
+
+
+.pokemon-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-image {
+    width: 100%;    
+    border-radius: 0; /* Remover o arredondamento da borda */
+    transition: transform 0.3s ease;
+}
+
+.pokemon-image:hover {
+    transform: scale(1.1);
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, 0.2);
+    
+}
+
+.card-title {
+    font-weight: 600;
+    color: #ffcb05;
+}
+
+.type-badge {
+    font-size: 0.9rem;
+    padding: 5px 12px;
+    margin: 5px;
+}
+
+.btn-outline-primary {
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+.modal-content {
+    background: #222;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background-color: #333;
+    border-bottom: 2px solid #444;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #ffcb05;
+}
+
+.progress-bar {
+    background-color: #ffcb05;
+}
+
+.evolution-img {
+    border-radius: 10px;
+    max-width: 150px;
+    margin-top: 10px;
+}
+
+/* Adicionando um pouco de animação para os cards e modais */
+.card, .modal-content {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.modal-dialog {
+    max-width: 800px; /* Tamanho máximo da modal */
+    margin: 1.75rem auto; /* Centraliza a modal */
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background-color: #333;
+    border-bottom: 2px solid #444;
+}
+
+.modal-body {
+    max-height: 550px; /* Limita a altura do conteúdo */
+    overflow-y: auto; /* Permite rolagem, se necessário */
+}
+
+.modal-footer {
+    border-top: 2px solid #444;
+}
+
+
+
